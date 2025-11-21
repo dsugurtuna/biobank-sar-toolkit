@@ -1,10 +1,12 @@
 # Biobank SAR Toolkit 🧬
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Bash](https://img.shields.io/badge/Language-Bash-blue.svg)](https://www.gnu.org/software/bash/)
 [![Bioinformatics](https://img.shields.io/badge/Domain-Bioinformatics-green.svg)]()
+[![Portfolio](https://img.shields.io/badge/Status-Portfolio_Project-purple.svg)]()
 
 **Professional Subject Access Request (SAR) Automation for Biobanks & Research Cohorts.**
+
+> **Note:** This repository contains sanitized versions of scripts developed during my tenure at **NIHR BioResource**. They are presented here for **educational and portfolio purposes only** to demonstrate proficiency in data management and bash scripting. No real patient data or internal infrastructure paths are included.
 
 The **Biobank SAR Toolkit** is a suite of open-source shell scripts designed to streamline the data discovery and reporting process for Subject Access Requests (SAR) under GDPR and other data protection regulations. 
 
@@ -55,9 +57,6 @@ These scripts are **templates**. You must adapt them to your specific directory 
 
 ## 🤝 Contributing
 Contributions are welcome! Whether it's adding support for VCF files, improving regex matching, or documentation fixes. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
-
-## 📄 License
-This project is licensed under the [MIT License](LICENSE) - see the file for details.
 
 ---
 *Developed for the bioinformatics community to ensure efficient, compliant, and transparent data management.*

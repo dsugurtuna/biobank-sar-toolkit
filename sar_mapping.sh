@@ -2,6 +2,11 @@
 
 # ==============================================================================
 # Script Name: sar_mapping.sh
+# Author:      Ugur Tuna
+# Context:     Developed during tenure at NIHR BioResource (Cambridge).
+# Disclaimer:  This script is a sanitized version for educational/portfolio use.
+#              It contains no real patient data or internal infrastructure paths.
+#
 # Description: Retrieves and standardizes participant ID mappings from alias 
 #              and phenotype manifests. Useful for Subject Access Requests (SAR).
 # Usage:       ./sar_mapping.sh

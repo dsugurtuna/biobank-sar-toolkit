@@ -2,6 +2,11 @@
 
 # ==============================================================================
 # Script Name: sar_discovery.sh
+# Author:      Ugur Tuna
+# Context:     Developed during tenure at NIHR BioResource (Cambridge).
+# Disclaimer:  This script is a sanitized version for educational/portfolio use.
+#              It contains no real patient data or internal infrastructure paths.
+#
 # Description: Searches for participant IDs across metadata manifests and 
 #              genotype file headers (.fam).
 # Usage:       ./sar_discovery.sh
