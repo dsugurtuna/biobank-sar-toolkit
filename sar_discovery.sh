@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # ==============================================================================
-# Script Name: locate_participant_data.sh
+# Script Name: sar_discovery.sh
 # Description: Searches for participant IDs across metadata manifests and 
 #              genotype file headers (.fam).
-# Usage:       ./locate_participant_data.sh
+# Usage:       ./sar_discovery.sh
 # ==============================================================================
 
 # --- Configuration ---

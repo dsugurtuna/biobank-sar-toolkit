@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # ==============================================================================
-# Script Name: generate_id_summary.sh
+# Script Name: sar_mapping.sh
 # Description: Retrieves and standardizes participant ID mappings from alias 
 #              and phenotype manifests. Useful for Subject Access Requests (SAR).
-# Usage:       ./generate_id_summary.sh
+# Usage:       ./sar_mapping.sh
 # ==============================================================================
 
 # --- Configuration: Define Files and IDs ---
