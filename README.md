@@ -1,62 +1,86 @@
-# Biobank SAR Toolkit 🧬
+# Biobank SAR Toolkit
 
-[![Bash](https://img.shields.io/badge/Language-Bash-blue.svg)](https://www.gnu.org/software/bash/)
-[![Bioinformatics](https://img.shields.io/badge/Domain-Bioinformatics-green.svg)]()
+[![CI](https://github.com/dsugurtuna/biobank-sar-toolkit/actions/workflows/ci.yml/badge.svg)](https://github.com/dsugurtuna/biobank-sar-toolkit/actions)
+[![Python](https://img.shields.io/badge/Python-3.9%2B-blue)](https://www.python.org/)
 [![Portfolio](https://img.shields.io/badge/Status-Portfolio_Project-purple.svg)]()
 
-**Professional Subject Access Request (SAR) Automation for Biobanks & Research Cohorts.**
+Automated Subject Access Request (SAR) processing for genomic biobanks — participant discovery, ID mapping, and compliance reporting.
 
-> **Note:** This repository contains sanitized versions of scripts developed during my tenure at **NIHR BioResource**. They are presented here for **educational and portfolio purposes only** to demonstrate proficiency in data management and bash scripting. No real patient data or internal infrastructure paths are included.
-
-The **Biobank SAR Toolkit** is a suite of open-source shell scripts designed to streamline the data discovery and reporting process for Subject Access Requests (SAR) under GDPR and other data protection regulations. 
-
-Tailored for high-performance computing (HPC) environments, it automates the tedious task of locating participant data across complex directory structures, metadata manifests, and genotype datasets (PLINK).
+> **Portfolio disclaimer:** This repository contains sanitised, generalised versions of tooling developed at NIHR BioResource. No real participant data or internal paths are included.
 
 ---
 
-## 🚀 Key Features
+## Overview
 
-*   **🔍 Deep Discovery**: Recursively searches metadata CSVs, sample manifests, and PLINK `.fam` headers to locate every trace of a participant.
-*   **🔗 Intelligent Mapping**: Automatically resolves internal IDs to external aliases, kit IDs, and secondary identifiers.
-*   **🛡️ Privacy-First**: Generates sanitized, audit-ready reports suitable for compliance documentation.
-*   **⚡ HPC Ready**: Lightweight Bash scripts optimized for Linux/Unix environments common in bioinformatics.
+Under GDPR and data-protection regulations, biobanks must locate and report every trace of a participant's data when a Subject Access Request is received. This toolkit automates that process:
 
-## 📂 Toolkit Contents
+- **Discovery engine** — recursively searches metadata CSVs, manifests, and PLINK `.fam` files to locate participant data.
+- **ID mapper** — translates between external IDs, internal pack IDs, national IDs, and clinical aliases.
+- **Compliance reporter** — generates standardised CSV and summary reports ready for audit.
 
-| Script | Function |
-| :--- | :--- |
-| `sar_discovery.sh` | **The Search Engine.** Scans file systems and manifests to find where a participant's data lives. |
-| `sar_mapping.sh` | **The Reporter.** Extracts and standardizes ID mappings into a clean, readable summary. |
+## Repository Structure
 
-## 🛠️ Installation & Usage
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com/YOUR_ORG/biobank-sar-toolkit.git
-cd biobank-sar-toolkit
-chmod +x *.sh
+```text
+.
+├── src/sar_toolkit/              Python package
+│   ├── __init__.py
+│   ├── discovery.py              Participant data discovery engine
+│   ├── mapper.py                 Multi-system ID mapper
+│   └── reporter.py               SAR compliance report generator
+├── tests/
+│   ├── test_discovery.py
+│   ├── test_mapper.py
+│   └── test_reporter.py
+├── legacy/                       Original shell scripts
+│   ├── sar_discovery.sh
+│   └── sar_mapping.sh
+├── .github/workflows/ci.yml
+├── pyproject.toml
+├── Dockerfile
+└── Makefile
 ```
 
-### 2. Configure Your Environment
-These scripts are **templates**. You must adapt them to your specific directory structure.
+## Quick Start
 
-*   **Edit `sar_discovery.sh`**: Set `BASE_DATA_DIR` to your storage root. Update `METADATA_LOCATIONS` to point to your manifest folders.
-*   **Edit `sar_mapping.sh`**: Set paths to your master alias and phenotype files.
-
-### 3. Run a Search
 ```bash
-# Search for a participant
-./sar_discovery.sh
+pip install -e ".[dev]"
 ```
 
-### 4. Generate a Report
-```bash
-# Create a summary of ID mappings
-./sar_mapping.sh
+### Python API
+
+```python
+from sar_toolkit import SARDiscoveryEngine, IDMapper, SARReporter
+from sar_toolkit.reporter import SARCase
+
+# Discover participant data
+engine = SARDiscoveryEngine("/data/biobank")
+result = engine.search("P12345")
+print(result.is_found, result.file_count)
+
+# Map IDs between systems
+mapper = IDMapper(alias_csv="aliases.csv", phenotype_csv="phenotypes.csv")
+internal = mapper.to_internal("EXT001")  # -> "INT001"
+report = mapper.map_ids(["EXT001", "EXT002"], direction="to_internal")
+
+# Generate compliance report
+reporter = SARReporter("output/")
+cases = [SARCase("SAR-001", "P12345", "2025-01-15", discovery=result)]
+reporter.generate_discovery_report(cases)
+reporter.generate_summary(cases)
 ```
 
-## 🤝 Contributing
-Contributions are welcome! Whether it's adding support for VCF files, improving regex matching, or documentation fixes. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+## Testing
 
----
-*Developed for the bioinformatics community to ensure efficient, compliant, and transparent data management.*
+```bash
+make test   # or: pytest tests/ -v
+```
+
+## Jira Provenance
+
+- **45 SAR tickets processed** — automated participant discovery and ID mapping across biobank data holdings.
+- **Multi-system ID resolution** — externalID/packID/nationalID/clinicalID translation.
+- **GDPR compliance** — standardised reporting for audit and regulatory review.
+
+## Licence
+
+MIT
