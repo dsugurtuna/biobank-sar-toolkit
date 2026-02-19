@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from sar_toolkit.mapper import IDMapper, MappingReport
+from sar_toolkit.mapper import IDMapper
 
 
 @pytest.fixture()

@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from sar_toolkit.discovery import SARDiscoveryEngine, DiscoveryResult
+from sar_toolkit.discovery import SARDiscoveryEngine
 
 
 @pytest.fixture()

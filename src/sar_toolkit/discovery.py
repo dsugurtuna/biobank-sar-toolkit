@@ -6,12 +6,9 @@ given participant ID appears within a genomic data lake.
 
 from __future__ import annotations
 
-import csv
-import os
-import re
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Dict, List, Optional, Set
+from typing import List, Optional, Set
 
 
 @dataclass

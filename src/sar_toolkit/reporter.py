@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import List, Optional
 
 from .discovery import DiscoveryResult
-from .mapper import IDMapper, MappingReport
+from .mapper import MappingReport
 
 
 @dataclass
